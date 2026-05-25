@@ -1,3 +1,4 @@
+<img width="1901" height="1075" alt="Real_Time_Pizza" src="https://github.com/user-attachments/assets/01d82910-a5c2-40e0-8a92-f62aecd888fe" />
 # Real-Time Pizza Ordering System
 
 Lightweight Node/Express pizza ordering app with session cart, admin pages, and real-time notifications.
