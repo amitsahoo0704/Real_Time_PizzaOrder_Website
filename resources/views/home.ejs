@@ -1,0 +1,222 @@
+<!-- Promo banner -->
+<div class="promo-banner" id="promoBanner" role="region" aria-label="Special offer">
+    <div class="container mx-auto flex items-center justify-between py-2">
+        <div class="promo-text"><strong>Limited time:</strong> Get up to <span class="font-bold">30% OFF</span> — use code <code>PIZZA10</code></div>
+        <div class="promo-actions">
+            <a href="#menu" class="btn-primary px-4 py-2 rounded">Order Now</a>
+            <button id="closePromo" aria-label="Dismiss offer" class="promo-close">✕</button>
+        </div>
+    </div>
+</div>
+
+<section class="hero py-16">
+    <div class="container mx-auto flex items-center justify-between">
+        <div class="w-1/2">
+            <h6 class="text-lg text-red-500"><em>Fresh. Fast. Delicious.</em></h6>
+            <h1 class="text-3xl md:text-6xl font-bold">Get Hot Pizza Delivered To Your Door</h1>
+            <p class="mt-4 text-gray-700">Our hand-tossed pizzas are made with the freshest ingredients and baked to perfection. Customise your toppings, choose your size, and enjoy fast delivery.</p>
+            <div class="mt-6">
+                <a href="#menu" class="px-6 py-3 rounded-full text-white font-bold mr-4 btn-primary">Order Now</a>
+                <a href="#features" class="px-6 py-3 rounded-full border border-gray-300 font-bold">How it works</a>
+            </div>
+        </div>
+        <div class="w-1/2 relative">
+                <!-- Animated SVG accent (decorative) -->
+                <svg class="svg-accent" width="160" height="160" viewBox="0 0 160 160" aria-hidden="true">
+                    <defs>
+                        <linearGradient id="g" x1="0" x2="1">
+                            <stop offset="0%" stop-color="#ff7a59" />
+                            <stop offset="100%" stop-color="#ff3d00" />
+                        </linearGradient>
+                    </defs>
+                    <g transform="translate(80,80)">
+                        <circle r="50" fill="url(#g)" opacity="0.12"></circle>
+                        <g class="slice" transform="rotate(0)">
+                            <path d="M0-50 A50 50 0 0 1 35 -15 L0 0 Z" fill="#ff8a65" />
+                        </g>
+                    </g>
+                </svg>
+                <img src="/img/hero-pizza.png" alt="">
+                <!-- Promo poster overlay -->
+                <div class="promo-card" role="region" aria-label="Special offer poster">
+                    <div class="offer-badge" aria-hidden="true">30%</div>
+                    <div class="promo-copy">
+                        <div class="lead">Hot Deal</div>
+                        <div class="title">Get <span class="accent">30% OFF</span> on select pizzas</div>
+                        <div class="sub">Use code <code>PIZZA10</code> at checkout</div>
+                        <a href="#menu" class="btn-primary mt-3 inline-block px-4 py-2 rounded">Order Now</a>
+                    </div>
+                </div>
+        </div>
+    </div> 
+</section>
+<section id="features" class="features container mx-auto py-12">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="feature-card p-6 rounded shadow-sm text-center">
+            <img src="/img/piz1.jpg" class="mx-auto w-32 h-32 rounded-full object-cover" alt="Fresh Ingredients">
+            <h3 class="mt-4 font-bold">Fresh Ingredients</h3>
+            <p class="mt-2 text-gray-600">We use locally sourced produce and premium cheese for every pizza.</p>
+        </div>
+        <div class="feature-card p-6 rounded shadow-sm text-center">
+            <img src="/img/pizza.png" class="mx-auto w-32 h-32 rounded-full object-cover" alt="Quick Delivery">
+            <h3 class="mt-4 font-bold">Quick Delivery</h3>
+            <p class="mt-2 text-gray-600">Hot and fast — delivered to your doorstep within 30 minutes in most areas.</p>
+        </div>
+        <div class="feature-card p-6 rounded shadow-sm text-center">
+            <img src="/img/hero-pizza.png" class="mx-auto w-32 h-32 rounded-full object-cover" alt="Customize">
+            <h3 class="mt-4 font-bold">Fully Customizable</h3>
+            <p class="mt-2 text-gray-600">Choose your size, crust, and toppings — make it your own.</p>
+        </div>
+    </div>
+</section>
+<!-- Carousel -->
+<section class="container mx-auto py-12">
+    <div class="carousel" id="galleryCarousel">
+        <div class="carousel-track">
+            <div class="carousel-slide"><img src="/img/piz1.jpg" loading="lazy" alt="gallery1"></div>
+            <div class="carousel-slide"><img src="/img/hero-pizza.png" loading="lazy" alt="gallery2"></div>
+            <div class="carousel-slide"><img src="/img/pizza.png" loading="lazy" alt="gallery3"></div>
+        </div>
+        <div class="carousel-dots" role="tablist" aria-label="Gallery navigation"></div>
+        <div class="carousel-controls">
+            <button class="carousel-btn" id="prevBtn" aria-label="Previous slide">‹</button>
+            <button class="carousel-btn" id="nextBtn" aria-label="Next slide">›</button>
+        </div>
+        <div id="carouselAnnouncer" class="sr-only" aria-live="polite"></div>
+    </div>
+</section>
+
+<!-- Testimonials -->
+<section class="testimonials container mx-auto py-12">
+    <h2 class="text-2xl font-bold mb-6">What our customers say</h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="testimonial">"Best pizza in town — crispy crust and amazing toppings!" — Riya</div>
+        <div class="testimonial">"Fast delivery and hot pizza. Highly recommend." — Karan</div>
+        <div class="testimonial">"Great flavours and friendly service." — Priya</div>
+    </div>
+</section>
+
+<script>
+// Simple carousel script
+;(function(){
+    const carousel = document.getElementById('galleryCarousel')
+    const track = carousel.querySelector('.carousel-track')
+    const slides = Array.from(track.children)
+    const prev = document.getElementById('prevBtn')
+    const next = document.getElementById('nextBtn')
+    const dotsContainer = carousel.querySelector('.carousel-dots')
+    let index = 0
+
+    // build dots
+    slides.forEach((s, i) => {
+        const btn = document.createElement('button')
+        btn.className = 'carousel-dot'
+        btn.setAttribute('role', 'tab')
+        btn.setAttribute('aria-selected', i === 0 ? 'true' : 'false')
+        btn.setAttribute('aria-controls', `slide-${i}`)
+        btn.setAttribute('data-index', i)
+        btn.addEventListener('click', () => { goTo(i); btn.focus() })
+        dotsContainer.appendChild(btn)
+        // mark slides with ids for aria
+        s.setAttribute('id', `slide-${i}`)
+        s.setAttribute('role', 'tabpanel')
+        s.setAttribute('aria-hidden', i === 0 ? 'false' : 'true')
+    })
+
+    function update() {
+        track.style.transform = `translateX(-${index * 100}%)`
+        // update dots and aria
+        const dots = dotsContainer.querySelectorAll('.carousel-dot')
+        dots.forEach((d, i) => {
+            d.setAttribute('aria-selected', i === index ? 'true' : 'false')
+            const slide = document.getElementById(`slide-${i}`)
+            if (slide) slide.setAttribute('aria-hidden', i === index ? 'false' : 'true')
+        })
+        // announce slide change for screen readers
+        const announcer = document.getElementById('carouselAnnouncer')
+        if (announcer) {
+            const activeImg = slides[index].querySelector('img')
+            const label = activeImg ? activeImg.getAttribute('alt') || `Slide ${index+1}` : `Slide ${index+1}`
+            announcer.innerText = `Slide ${index+1} of ${slides.length}: ${label}`
+        }
+    }
+
+    function goTo(i) { index = (i + slides.length) % slides.length; update() }
+
+    prev && prev.addEventListener('click', () => { goTo(index - 1) })
+    next && next.addEventListener('click', () => { goTo(index + 1) })
+
+    // keyboard navigation
+    carousel.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowLeft') { e.preventDefault(); goTo(index - 1) }
+        if (e.key === 'ArrowRight') { e.preventDefault(); goTo(index + 1) }
+        if (e.key === 'Home') { e.preventDefault(); goTo(0) }
+        if (e.key === 'End') { e.preventDefault(); goTo(slides.length - 1) }
+    })
+
+    // auto-advance but pause on focus
+    let auto = setInterval(() => { goTo(index + 1) }, 5000)
+    carousel.addEventListener('focusin', () => clearInterval(auto))
+    carousel.addEventListener('focusout', () => { auto = setInterval(() => { goTo(index + 1) }, 5000) })
+
+    // make carousel focusable
+    carousel.setAttribute('tabindex', '0')
+    update()
+})()
+</script>
+<script>
+// Promo banner dismiss and smooth scroll
+;(function(){
+    const banner = document.getElementById('promoBanner')
+    const close = document.getElementById('closePromo')
+    try {
+        if (localStorage && localStorage.getItem('promoClosed')) {
+            banner && (banner.style.display = 'none')
+        }
+    } catch(e){}
+    if (close) close.addEventListener('click', function(){
+        banner && (banner.style.display = 'none')
+        try{ localStorage && localStorage.setItem('promoClosed','1') }catch(e){}
+    })
+    // smooth scroll for any promo CTA anchor
+    document.querySelectorAll('.promo-banner a, .promo-card a').forEach(a=>{
+        a.addEventListener('click', function(e){
+            const href = this.getAttribute('href')
+            if (href && href.startsWith('#')){
+                e.preventDefault()
+                const el = document.querySelector(href)
+                if (el) el.scrollIntoView({behavior:'smooth', block:'start'})
+            }
+        })
+    })
+})()
+</script>
+<section class="menu container mx-auto py-8">
+    <h1 class="text-xl font-bold mb-8">All Pizzas</h1>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 col-gap-12 row-gap-16">
+        <% pizzas.forEach(function(pizza) { %>
+        <div class="w-full md:w-64">
+            <% 
+                const localImages = ['piz1.jpg','pizza.png','hero-pizza.png'];
+                function nameHash(s){ let h=0; for(let i=0;i<s.length;i++){ h = ((h<<5)-h) + s.charCodeAt(i); h |= 0 } return Math.abs(h) }
+                const imgFile = localImages[nameHash(pizza.name) % localImages.length];
+            %>
+            <img class="h-40 mb-4 mx-auto" src="/img/<%= imgFile %>" alt="<%= pizza.name %>">
+            <div class="text-center">
+                <h2 class="mb-4 text-lg"><%= pizza.name %></h2>
+                <span class="size py-1 px-4 rounded-full uppercase text-xs"><%= pizza.size %></span>
+                <div class="flex items-center justify-around mt-6">
+                    <span class="font-bold text-lg">₹<%= pizza.price %></span>
+                    <button data-pizza="<%= JSON.stringify(pizza) %>"
+                        class="add-to-cart py-1 px-6 rounded-full flex items-center font-bold">
+                        <span>+</span>
+                        <span class="ml-4">Add</span>
+                        <span class="add-count ml-2"><%= session.cart && session.cart.items && session.cart.items[pizza._id] ? '+' + session.cart.items[pizza._id].qty : '' %></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <% }) %>
+
+    </div>
+</section>
